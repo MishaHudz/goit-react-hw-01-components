@@ -1,4 +1,13 @@
 import PropTypes from 'prop-types';
+import {
+  Description,
+  ProfileContainer,
+  UserAvatar,
+  Stats,
+  StatsItem,
+  UserName,
+  UserInfo,
+} from './Profile.styles';
 
 export function Profile({
   username,
@@ -8,33 +17,29 @@ export function Profile({
   stats: { followers, views, likes },
 }) {
   return (
-    <div className="profile">
-      <div className="description">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
-          alt="User avatar"
-          className="avatar"
-        />
-        <p className="name">Petra Marica</p>
-        <p className="tag">@pmarica</p>
-        <p className="location">Salvador, Brasil</p>
-      </div>
+    <ProfileContainer>
+      <Description>
+        <UserAvatar src={avatar} alt="User avatar"></UserAvatar>
+        <UserName>{username}</UserName>
+        <UserInfo>@{tag}</UserInfo>
+        <UserInfo>{location}</UserInfo>
+      </Description>
 
-      <ul className="stats">
-        <li>
+      <Stats>
+        <StatsItem>
           <span className="label">Followers</span>
           <span className="quantity">{followers}</span>
-        </li>
-        <li>
+        </StatsItem>
+        <StatsItem>
           <span className="label">Views</span>
           <span className="quantity">{views}</span>
-        </li>
-        <li>
+        </StatsItem>
+        <StatsItem>
           <span className="label">Likes</span>
           <span className="quantity">{likes}</span>
-        </li>
-      </ul>
-    </div>
+        </StatsItem>
+      </Stats>
+    </ProfileContainer>
   );
 }
 

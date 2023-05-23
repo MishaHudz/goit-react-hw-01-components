@@ -1,21 +1,32 @@
-import { StatisticsElem } from 'components/StatisticsElem/StatisticsElem';
 import PropTypes from 'prop-types';
-
+import { getRandomHexColor } from 'Helpers/randomColorGenerator';
+import { StatisticsElem } from 'components/StatisticsElem/StatisticsElem';
+import {
+  Item,
+  ItemList,
+  StatisticSection,
+  StatisticTitel,
+} from './Statistics.style';
 export function Statistics({ stats, title }) {
   return (
-    <section className="statistics">
-      {title && <h2 className="title">{title}</h2>}
-      <ul className="stat-list">
+    <StatisticSection>
+      {title && <StatisticTitel>{title}</StatisticTitel>}
+      <ItemList>
+        {' '}
         {stats.map(statisticElem => (
-          <li className="item" key={statisticElem.id}>
+          <Item
+            style={{ backgroundColor: `${getRandomHexColor()}` }}
+            key={statisticElem.id}
+          >
+            {' '}
             <StatisticsElem
               percentage={statisticElem.percentage}
               label={statisticElem.label}
             />
-          </li>
+          </Item>
         ))}
-      </ul>
-    </section>
+      </ItemList>
+    </StatisticSection>
   );
 }
 
